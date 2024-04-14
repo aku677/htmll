@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт с видео и фоновым изображением</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/564x/43/8e/87/438e87422ec4603b5e81b092c4397e6f.jpg'); /* Путь к фоновому изображению */
+            background-size: cover;
+            color: #fff; /* Цвет текста */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #player {
+            width: 80%;
+            max-width: 800px;
+            display: block;
+            margin: 20px auto;
+            border: 5px solid #3498DB; /* Рамка вокруг видео */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            color: #fff; /* Цвет текста */
+        }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать на сайт с видео!</h1>
+
+    <div id="player"></div> <!-- Здесь будет отображаться видео -->
+
+    <p>Это пример сайта с видео и фоновым изображением.</p>
+
+    <script>
+        // Подключаем API YouTube для встраивания видео
+        let tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        let firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Функция создания встраиваемого плеера YouTube
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '360',
+                width: '640',
+                videoId: 'uMeR2W19wT0', // Замените VIDEO_ID на ID вашего видео на YouTube
+                playerVars: {
+                    'autoplay': 1, // Автовоспроизведение
+                    'controls': 1, // Показывать элементы управления
+                    'showinfo': 0, // Не показывать информацию о видео
+                    'rel': 0, // Не показывать рекомендации
+                },
+            });
+        }
+    </script>
+</body>
+</html>
